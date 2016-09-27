@@ -47,7 +47,7 @@ echo "criando dados no server"
 mysql --login-path=fatualizaip -e"insert into fatualizaip.dados_servers set alias='$nome', ip='$(lynx --dump http://ipecho.net/plain)',tempoUpdate='$tempo',ultimoUpdate=current_timestamp;"
 
 #adiciona uma linha ao final do rc.local (é preciso checar se esta ok no arquivo)
-read -p "deseja adicionar uma linha ao rc.local?(s/N)"option
-if [[ $option =="s" ]]; then
+read -p "deseja adicionar uma linha ao rc.local?(s/N): " option
+if [[ $option == "s" ]]; then
 	sed -i "s/^exit 0/$diretorio_default\/fatualizaip.sh \&\nexit 0/" /etc/rc.local
 fi
