@@ -5,6 +5,6 @@
 while [[ true ]]; do
 	source /usr/local/share/fatualizaip/config
 	ip=$(lynx --dump http://ipecho.net/plain)
-	mysql --login-path=fatualizaip -e "update fatualizaip.dados_servers set ip=$ip, tempoUpdate=current_timestamp where alias=$nome"
-	sleep $tempo * 60
+mysql --login-path=fatualizaip -e "update fatualizaip.dados_servers set ip='$ip', tempoUpdate='$tempo', ultimoUpdate=current_timestamp where (alias='$nome')"
+	sleep ${tempo}m
 done
