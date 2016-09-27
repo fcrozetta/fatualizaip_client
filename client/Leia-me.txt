@@ -1,0 +1,8 @@
+Client para fatualizaip
+este client faz a atualização periódica do endereço ip externo e o encaminha ao server configurado.
+
+[Instalação]
+Execute o install.sh como root. só isso mesmo.
+
+O script fatualizaip.sh será copiado para o diretório default que foi configurado no install (/usr/local/share/fatualizaip/, por padrão).
+Uma linha será adicionada no rc.local, antes de exit 0
