@@ -15,7 +15,7 @@ if [[ $(which yum) ]]; then
 fi
 
 # Instalação de programas necessários
-$instalar -y lynx mysql-client
+$instalar -y lynx mysql-client sed
 
 diretorio_default='/usr/local/share/fatualizaip'
 mkdir -p $diretorio_default
@@ -49,5 +49,5 @@ mysql --login-path=fatualizaip -e"insert into fatualizaip.dados_servers set alia
 #adiciona uma linha ao final do rc.local (é preciso checar se esta ok no arquivo)
 read -p "deseja adicionar uma linha ao rc.local?(s/N): " option
 if [[ $option == "s" ]]; then
-	sed -i "s/^exit 0/$diretorio_default\/fatualizaip.sh \&\nexit 0/" /etc/rc.local
+	sed -i -e "$ i\\$diretorio_default/fatualizaip.sh &\n" /etc/rc.local
 fi
